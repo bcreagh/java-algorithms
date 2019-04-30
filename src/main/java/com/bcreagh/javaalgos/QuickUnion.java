@@ -17,6 +17,9 @@ public class QuickUnion {
     public void union(int node1, int node2) {
         int root1 = getRoot(node1);
         int root2 = getRoot(node2);
+        if (root1 == root2) {
+            return;
+        }
         if (sizes[root1] < sizes[root2]) {
             join(root1, root2);
         } else {
