@@ -1,6 +1,10 @@
 package com.bcreagh.javaalgos.resizingarray;
 
-public class ResizingArray<T> {
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import java.util.Iterator;
+
+public class ResizingArray<T> implements Iterable<T> {
 
     private T[] items;
     private int length = 0;
@@ -72,6 +76,37 @@ public class ResizingArray<T> {
             String error = "The index you provided was out of bounds. The length of the " +
                     "ResizingArray is %d, the index you provided was %d";
             throw new IndexOutOfBoundsException(String.format(error, length, index));
+        }
+    }
+
+    public Iterator<T> iterator() {
+        return new ResizingArrayIterator<>(this);
+    }
+
+    private class ResizingArrayIterator<T>  implements Iterator<T> {
+
+        private ResizingArray<T> array;
+        private int index;
+
+        public ResizingArrayIterator(ResizingArray<T> array) {
+            this.array = array;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return index < array.length;
+        }
+
+        @Override
+        public T next() {
+            T next = array.get(index);
+            index += 1;
+            return next;
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
         }
     }
 

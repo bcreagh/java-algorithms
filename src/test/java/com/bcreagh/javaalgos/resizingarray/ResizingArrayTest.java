@@ -90,4 +90,19 @@ public class ResizingArrayTest {
         assertEquals(8, array.getCapacity());
     }
 
+    @Test
+    public void resizingArray_shouldBeIterable() {
+        ResizingArray<Integer> array = new ResizingArray<>();
+        int[] nums = {13, 13513, 234, 6164};
+        for (int num : nums) {
+            array.add(num);
+        }
+        int i = 0;
+        for (Integer item: array) {
+            assertTrue(nums[i] == item);
+            i++;
+        }
+        assertTrue(i == 4);
+    }
+
 }
