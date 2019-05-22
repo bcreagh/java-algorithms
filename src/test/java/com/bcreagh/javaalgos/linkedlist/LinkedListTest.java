@@ -2,6 +2,9 @@ package com.bcreagh.javaalgos.linkedlist;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class LinkedListTest {
@@ -190,6 +193,22 @@ public class LinkedListTest {
         list.removeAt(0);
         System.out.println("Len: " + list.getLength());
         assertNull(list.getLast());
+    }
+
+    @Test
+    public void linkedList_shouldBeIterable() {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        int[] items = {32, 23, 234, 3242, 65};
+        for (int item: items) {
+            list.add(item);
+        }
+        for(int item: list) {
+            arrayList.add(item);
+        }
+        assertEquals(items.length, list.getLength());
+        for (int i = 0; i < arrayList.size(); i++) {
+            assertEquals(items[i], (int) arrayList.get(i));
+        }
     }
 
 }

@@ -1,6 +1,8 @@
 package com.bcreagh.javaalgos.linkedlist;
 
-public class LinkedList<T> {
+import java.util.Iterator;
+
+public class LinkedList<T> implements Iterable<T> {
     private int length = 0;
     private Node<T> first;
     private Node<T> last;
@@ -98,6 +100,33 @@ public class LinkedList<T> {
     // O(1)
     public int getLength() {
         return length;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new LinkedListIterator();
+    }
+
+    private class LinkedListIterator implements Iterator<T> {
+
+        Node<T> currentNode = LinkedList.this.first;
+
+        @Override
+        public boolean hasNext() {
+            return currentNode != null;
+        }
+
+        @Override
+        public T next() {
+            T item = currentNode.item;
+            currentNode = currentNode.next;
+            return item;
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
     }
 
     private class Node<T> {
