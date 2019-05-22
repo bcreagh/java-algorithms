@@ -44,10 +44,10 @@ public class StackWithResizingArrayTest {
         for (int i = 0; i < items.length; i++) {
             stack.push(items[i]);
         }
-        int i = items.length - 1;
+        int i = 0;
         for (int item: stack) {
-            assertEquals(items[i], (int) stack.pop());
-            i--;
+            assertEquals(items[i], item);
+            i++;
         }
     }
 }

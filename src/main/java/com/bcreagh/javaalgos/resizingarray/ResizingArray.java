@@ -1,7 +1,5 @@
 package com.bcreagh.javaalgos.resizingarray;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.Iterator;
 
 public class ResizingArray<T> implements Iterable<T> {
