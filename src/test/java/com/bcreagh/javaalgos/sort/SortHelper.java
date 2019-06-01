@@ -7,7 +7,7 @@ public class SortHelper {
 
     private static Random random = new Random(System.currentTimeMillis());
 
-    public static void sort_shouldSortRandomlyGeneratedArrays(Sorter sorter) {
+    public static void sort_shouldSortRandomlyGeneratedArrays(Sorter<Integer> sorter) {
         for (int i = 0; i < 100; i++) {
             Integer[] input = SortHelper.generatedRandomArray(200, 50000);
             input = sorter.sort(input);
@@ -15,7 +15,7 @@ public class SortHelper {
         }
     }
 
-    public static void sort_shouldSortRandomlyGeneratedArraysWithNegatives(Sorter sorter) {
+    public static void sort_shouldSortRandomlyGeneratedArraysWithNegatives(Sorter<Integer> sorter) {
         for (int i = 0; i < 20; i++) {
             Integer[] input = SortHelper.generatedRandomArray(200, 50000);
             input = sorter.sort(input);
@@ -23,19 +23,19 @@ public class SortHelper {
         }
     }
 
-    public static void sort_withEmptyArray(Sorter sorter) {
+    public static void sort_withEmptyArray(Sorter<Integer> sorter) {
         Integer[] input = SortHelper.getEmptyArray();
         input = sorter.sort(input);
         assertTrue(input.length == 0);
     }
 
-    public static void sort_withAllEqualValues(Sorter sorter) {
+    public static void sort_withAllEqualValues(Sorter<Integer> sorter) {
         int value = 234;
         Integer[] input = SortHelper.getArrayOfEqualValues(value);
         sorter.sort(input);
     }
 
-    public static void sort_withAlreadySortedArray(Sorter sorter) {
+    public static void sort_withAlreadySortedArray(Sorter<Integer> sorter) {
         Integer[] input = SortHelper.getSortedArray();
         sorter.sort(input);
         assertTrue(SortHelper.isSorted(input));
