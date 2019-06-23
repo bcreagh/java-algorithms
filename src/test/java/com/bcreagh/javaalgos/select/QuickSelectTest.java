@@ -24,6 +24,9 @@ public class QuickSelectTest {
     public void select_withRandomInput() {
         for (int i = 0; i < 100; i++) {
             Integer[] input = InputUtil.generatedRandomArray(200, 50000);
+            if (input.length == 0) {
+                continue;
+            }
             int k = random.nextInt(input.length);
             Integer result = quickSelect.select(input, k);
             verifyResult(input, k, result);
