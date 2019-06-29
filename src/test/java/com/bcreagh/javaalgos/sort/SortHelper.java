@@ -19,7 +19,7 @@ public class SortHelper {
 
     public static void sort_shouldSortRandomlyGeneratedArraysWithNegatives(Sorter<Integer> sorter) {
         for (int i = 0; i < 20; i++) {
-            Integer[] input = InputUtil.generatedRandomArray(200, 50000);
+            Integer[] input = InputUtil.getRandomArrayWithNegatives(200, 50000);
             input = sorter.sort(input);
             assertTrue(SortHelper.isSorted(input));
         }
