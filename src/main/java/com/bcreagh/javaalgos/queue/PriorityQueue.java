@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
 
+// this is a Priority Queue which uses a Binary Heap as its underlying data structure
+
 // WARNING: This class breaks if you mutate the data from outside the class
 // It is done this way so that I could use Generics. In real world scenarios,
 // I would not recommend doing it this way
