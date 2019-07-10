@@ -2,8 +2,8 @@ package com.bcreagh.javaalgos.exceptions;
 
 public class DuplicateKeyException extends RuntimeException {
 
-    public DuplicateKeyException(String message) {
-        super(message);
+    public DuplicateKeyException(String key) {
+        super("The provided key already exists. The key provided was: " + key);
     }
 
 }

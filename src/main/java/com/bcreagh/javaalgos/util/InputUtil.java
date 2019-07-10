@@ -1,5 +1,10 @@
 package com.bcreagh.javaalgos.util;
 
+import com.bcreagh.javaalgos.random.Shuffle;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class InputUtil {
@@ -13,6 +18,27 @@ public class InputUtil {
 
     public static Integer[] generatedRandomArrayWithFixedLength(int length) {
         return randomArray(length, Integer.MAX_VALUE);
+    }
+
+    public static Integer[] generatedRandomArrayWithoutDuplicates(int maxLength, int maxValue) {
+        Integer[] arrayWithDuplicates = generatedRandomArray(maxLength, maxValue);
+        if (arrayWithDuplicates.length == 0) {
+            return arrayWithDuplicates;
+        }
+        Arrays.sort(arrayWithDuplicates);
+        List<Integer> listWithDuplicatesRemoved = new ArrayList<>();
+        listWithDuplicatesRemoved.add(arrayWithDuplicates[0]);
+        Integer previousItem = arrayWithDuplicates[0];
+        for (int i = 1; i < arrayWithDuplicates.length; i++) {
+            if (arrayWithDuplicates[i].compareTo(previousItem) != 0) {
+                listWithDuplicatesRemoved.add(arrayWithDuplicates[i]);
+                previousItem = arrayWithDuplicates[i];
+            }
+        }
+        Integer[] arrayWithDupsRemoved = new Integer[listWithDuplicatesRemoved.size()];
+        arrayWithDupsRemoved = listWithDuplicatesRemoved.toArray(arrayWithDupsRemoved);
+        Shuffle.shuffle(arrayWithDupsRemoved);
+        return arrayWithDupsRemoved;
     }
 
     private static Integer[] randomArray(int length, int maxValue) {
@@ -53,4 +79,7 @@ public class InputUtil {
         return array;
     }
 
+    public static void main(String[] args) {
+
+    }
 }
