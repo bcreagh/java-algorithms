@@ -19,6 +19,10 @@ public class QueueWithLinkedList<T> implements Iterable<T> {
         return items.removeAt(0);
     }
 
+    public boolean isEmpty() {
+        return items.getLength() == 0;
+    }
+
 
     @Override
     public Iterator<T> iterator() {

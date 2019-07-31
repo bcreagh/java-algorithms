@@ -7,15 +7,15 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class DepthFirstSearchTest {
+public class BreadthFirstSearchTest {
 
     private Digraph digraph;
-    private DepthFirstSearch dfs;
+    private BreadthFirstSearch bfs;
     private int[][] defaultEdges;
 
     @Before
     public void setup() {
-        dfs = null;
+        bfs = null;
         digraph = new Digraph(10);
         defaultEdges = getDefaultEdges();
         for (int[] edge: defaultEdges) {
@@ -25,13 +25,13 @@ public class DepthFirstSearchTest {
 
     @Test
     public void sys_test() {
-        dfs = new DepthFirstSearch(digraph, 3);
+        bfs = new BreadthFirstSearch(digraph, 3);
 
         ensurePathsExist(4, 7, 2, 8, 1, 0);
         ensurePathsDoNotExist(6, 5, 9);
 
         int[] expectedPathTo0 = new int[] {3, 4, 7, 1, 0};
-        List<Integer> pathTo0 = dfs.pathTo(0);
+        List<Integer> pathTo0 = bfs.pathTo(0);
 
         assertEquals(expectedPathTo0.length, pathTo0.size());
 
@@ -39,7 +39,7 @@ public class DepthFirstSearchTest {
             assertEquals(expectedPathTo0[i], (int) pathTo0.get(i));
         }
 
-        assertNull(dfs.pathTo(9));
+        assertNull(bfs.pathTo(9));
     }
 
     private int[][] getDefaultEdges() {
@@ -58,14 +58,13 @@ public class DepthFirstSearchTest {
 
     private void ensurePathsExist(int... vertices) {
         for (int vertex: vertices) {
-            assertTrue(dfs.pathExists(vertex));
+            assertTrue(bfs.pathExists(vertex));
         }
     }
 
     private void ensurePathsDoNotExist(int... vertices) {
         for (int vertex: vertices) {
-            assertFalse(dfs.pathExists(vertex));
+            assertFalse(bfs.pathExists(vertex));
         }
     }
-
 }
